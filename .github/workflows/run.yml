@@ -11,6 +11,6 @@ jobs:
     - name: Install build dependencies
       run: |
         pip install -r requirements.txt
-        apt install chromium-chromedriver
+        sudo apt install chromium-chromedriver
         wget -q ${{ secrets.CONFIG_URL }}
         python3 ms_rewards_farmer.py
