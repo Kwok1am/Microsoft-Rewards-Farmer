@@ -1,0 +1,16 @@
+name: Run Rewards
+on:
+  #schedule:
+  #  - cron: 5 */2 * * *
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: Ubuntu-20.04  
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install build dependencies
+      run: |
+        pip install -r requirements.txt
+        apt install chromium-chromedriver
+        wget -q ${{ secrets.CONFIG_URL }}
+        python3 ms_rewards_farmer.py
